@@ -1,0 +1,12 @@
+coisini:
+  defs:
+    app-name: cloud-gateway
+    server-port: 18020
+  eureka:
+#    url: http://127.0.0.1:18010/eureka/
+    url: http://106.13.47.126:18010/eureka/
+    username: admin
+    password: x5zrqj@RZWD
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+

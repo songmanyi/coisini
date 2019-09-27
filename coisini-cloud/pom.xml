@@ -17,6 +17,10 @@
     <name>coisini-cloud</name>
 
     <modules>
+        <module>cloud-common</module>
+        <module>cloud-registry</module>
+        <module>cloud-gateway</module>
+        <module>biz-user</module>
     </modules>
 
     <properties>
@@ -28,7 +32,7 @@
         <!-- jdk版本 -->
         <java.version>1.8</java.version>
         <!-- spring cloud版本 -->
-        <spring-cloud.version>Finchley.M8</spring-cloud.version>
+        <spring-cloud.version>Greenwich.RC2</spring-cloud.version>
         <!-- connection pool版本 -->
         <HikariCP.version>2.7.8</HikariCP.version>
         <!-- msyql driver版本 -->

@@ -1,0 +1,60 @@
+server:
+  port: ${coisini.defs.server-port}
+
+spring:
+  application:
+    name: ${coisini.defs.app-name}
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      enabled: true   # 启用http上传处理
+      max-file-size: 100MB      # 设置单个文件的最大长度, 默认1M
+      max-request-size: 200MB   # 设置最大的请求文件的大小, 默认10M
+      file-size-threshold: 1MB # 当上传文件达到1MB的时候进行磁盘写入
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${coisini.eureka.url}
+    registryFetchIntervalSeconds: 5
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 10
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    metadata-map:
+      username: ${coisini.eureka.username}
+      password: ${coisini.eureka.password}
+
+##路由配置##
+zuul:
+  prefix: /coisini/api
+  stripPrefix: true
+  ignoredServices: '*'
+  sensitive-headers: Access-Control-Allow-Origin,Access-Control-Allow-Methods
+  custom-sensitive-headers: true
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+    max-per-route-connections: 1000
+    max-total-connections: 1000
+  routes:
+    #物品微服务
+    biz-user:
+      path: /user/**/**
+      stripPrefix: true
+      serviceId: biz-user
+
+####超时配置####
+ribbon:
+  ReadTimeout: 100000
+  ConnectTimeout: 100000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: false
+  eureka:
+    enabled: true
+
+logging:
+  path: /var/coisini/log/${coisini.defs.app-name}

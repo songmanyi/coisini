@@ -1,0 +1,38 @@
+server:
+  port: ${coisini.defs.server-port}
+
+spring:
+  application:
+    name: ${coisini.defs.app-name}
+  profiles:
+    active: dev
+  redis:
+    database: 15
+    host: 106.13.89.134
+    port: 6379
+    password: x5zrqj@RZWD
+    timeout: 200ms
+    jedis:
+      pool:
+        max-active: 200
+        max-idle: 20
+        min-idle: 0
+        max-wait: -1ms
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${coisini.eureka.url}
+    registryFetchIntervalSeconds: 5
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 10
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    metadata-map:
+      username: ${coisini.eureka.username}
+      password: ${coisini.eureka.password}
+
+logging:
+  path: /var/coisini/log/${coisini.defs.app-name}
