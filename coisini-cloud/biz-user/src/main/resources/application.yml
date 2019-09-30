@@ -7,10 +7,10 @@ spring:
   profiles:
     active: dev
   redis:
-    database: 15
-    host: 106.13.89.134
-    port: 6379
-    password: x5zrqj@RZWD
+    database: ${coisini.redis.database}
+    host: ${coisini.redis.host}
+    port: ${coisini.redis.port}
+    password: ${coisini.redis.password}
     timeout: 200ms
     jedis:
       pool:
@@ -19,6 +19,13 @@ spring:
         min-idle: 0
         max-wait: -1ms
 
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 50000
+        readTimeout: 50000
+        loggerLevel: basic
 
 eureka:
   client:

@@ -61,6 +61,11 @@
             <artifactId>jedis</artifactId>
             <version>2.10.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.work</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
