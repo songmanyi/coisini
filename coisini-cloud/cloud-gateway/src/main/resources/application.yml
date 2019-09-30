@@ -23,9 +23,6 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     preferIpAddress: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    metadata-map:
-      username: ${coisini.eureka.username}
-      password: ${coisini.eureka.password}
 
 ##路由配置##
 zuul:

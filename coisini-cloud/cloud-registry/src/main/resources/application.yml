@@ -13,10 +13,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${coisini.eureka.url}
-  instance:
-    metadata-map:
-      username: ${coisini.eureka.username}
-      password: ${coisini.eureka.password}
 
 logging:
   path: /var/coisini/log/${coisini.defs.app-name}
