@@ -1,5 +1,6 @@
 package com.work.bizuser.controller.privates;
 
+import com.work.cloudcommon.exception.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,9 @@ public class UserPrivateController {
                         @RequestParam(value = "password") String password) {
         System.out.println(userName);
         System.out.println(password);
-
+        if ("1".equals(userName)) {
+            throw new CustomException("报错了");
+        }
         redisTemplate.opsForValue().set("ceshi-" + userName + "-" + password, "", 5, TimeUnit.MINUTES);
         return "test";
     }
