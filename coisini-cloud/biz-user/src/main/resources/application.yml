@@ -19,14 +19,6 @@ spring:
         min-idle: 0
         max-wait: -1ms
 
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 50000
-        readTimeout: 50000
-        loggerLevel: basic
-
 eureka:
   client:
     serviceUrl:

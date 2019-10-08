@@ -19,6 +19,7 @@ public class WholeControllerAdvice {
     public JsonData errorHandler(Exception ex) {
         JsonData data = new JsonData();
         data.setSuccess(false);
+        System.out.println("全局异常捕获：" + ex.getMessage());
         if (ex instanceof CustomException) {
             CustomException cex = (CustomException) ex;
             data.setCode(cex.getCode());
