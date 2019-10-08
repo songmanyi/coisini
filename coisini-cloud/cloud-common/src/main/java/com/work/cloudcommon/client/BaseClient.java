@@ -7,7 +7,10 @@ import com.work.cloudcommon.json.JsonData;
 public abstract class BaseClient {
 
     public <T> T parseJson(JsonData jsonData, Class<T> clazz) {
-        if (jsonData == null || !jsonData.isSuccess()) {
+        if (jsonData == null) {
+            throw new CustomException("服务端返回参数异常，工程师正在排查");
+        }
+        if (!jsonData.isSuccess()) {
             throw new CustomException(jsonData.getCode(), jsonData.getMessage());
         }
         if (jsonData.getData() == null) {

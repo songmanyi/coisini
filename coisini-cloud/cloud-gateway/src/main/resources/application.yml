@@ -37,11 +37,16 @@ zuul:
     max-per-route-connections: 1000
     max-total-connections: 1000
   routes:
-    #物品微服务
+    #人员微服务
     biz-user:
       path: /user/**/**
       stripPrefix: true
       serviceId: biz-user
+    #菜单微服务
+    biz-menu:
+      path: /menu/**/**
+      stripPrefix: true
+      serviceId: biz-menu
 
 ####超时配置####
 ribbon:
