@@ -6,6 +6,15 @@ spring:
     name: ${coisini.defs.app-name}
   profiles:
     active: dev
+  datasource:
+    url: ${coisini.datasource.url}
+    username: ${coisini.datasource.username}
+    password: ${coisini.datasource.password}
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      auto-commit: true
+      connection-test-query: 'SELECT 1'
+      maximum-pool-size: 15
   redis:
     database: ${coisini.redis.database}
     host: ${coisini.redis.host}
@@ -18,6 +27,19 @@ spring:
         max-idle: 20
         min-idle: 0
         max-wait: -1ms
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.work.bizuser.entity
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
 
 eureka:
   client:

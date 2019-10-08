@@ -46,5 +46,14 @@ eureka:
     preferIpAddress: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
 logging:
   path: /var/coisini/log/${coisini.defs.app-name}
