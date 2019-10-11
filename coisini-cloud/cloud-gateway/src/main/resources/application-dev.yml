@@ -4,7 +4,7 @@ coisini:
     server-port: 18020
   eureka:
 #    url: http://127.0.0.1:18010/eureka/
-    url: http://106.13.47.126:18010/eureka/
+    url: http://106.13.89.134:18010/eureka/
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
 
 
