@@ -22,6 +22,7 @@
         <module>cloud-gateway</module>
         <module>biz-user</module>
         <module>biz-menu</module>
+        <module>biz-auth</module>
     </modules>
 
     <properties>
