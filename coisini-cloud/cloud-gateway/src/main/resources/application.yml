@@ -12,6 +12,16 @@ spring:
       max-file-size: 100MB      # 设置单个文件的最大长度, 默认1M
       max-request-size: 200MB   # 设置最大的请求文件的大小, 默认10M
       file-size-threshold: 1MB # 当上传文件达到1MB的时候进行磁盘写入
+  security:
+    basic:
+      enabled: false
+    oauth2:
+      client:
+        access-token-uri: http://biz-auth/auth/oauth/token
+        user-authorization-uri: http://biz-auth/auth/oauth/authorize
+      resource:
+        user-info-uri: http://biz-user/user/user
+        prefer-token-info: false
 
 eureka:
   client:
@@ -47,6 +57,10 @@ zuul:
       path: /menu/**/**
       stripPrefix: true
       serviceId: biz-menu
+    #服务认证和授权
+    biz-auth:
+      path: /auth/**
+      serviceId: biz-auth
 
 ####超时配置####
 ribbon:
