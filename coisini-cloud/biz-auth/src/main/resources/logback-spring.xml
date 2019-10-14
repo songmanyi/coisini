@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="10 seconds" debug="false">
-    <contextName>biz-user</contextName>
+    <contextName>biz-auth</contextName>
     <!--
     Logger 可以被分配级别。级别包括：TRACE、DEBUG、INFO、WARN 和 ERROR
     级别排序为： TRACE < DEBUG < INFO < WARN < ERROR
@@ -9,7 +9,7 @@
     <logger name="org.apache.activemq" level="INFO"/>
     <logger name="org.apache.zookeeper" level="INFO"/>
 
-    <property name="LOG_HOME" value="/var/coisini/log/biz-user"/>
+    <property name="LOG_HOME" value="/var/coisini/log/biz-auth"/>
     <!--文件输出的格式设置 -->
     <appender name="FILE"
               class="ch.qos.logback.core.rolling.RollingFileAppender">

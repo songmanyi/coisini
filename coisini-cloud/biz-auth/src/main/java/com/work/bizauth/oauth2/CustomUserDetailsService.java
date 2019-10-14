@@ -1,17 +1,18 @@
 package com.work.bizauth.oauth2;
 
 import com.work.bizauth.entity.Role;
-import com.work.bizauth.entity.User;
 import com.work.bizauth.service.IRoleService;
 import com.work.bizauth.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,17 +28,19 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String uniqueId) {
 
-        User user = userService.getByUniqueId(uniqueId);
+        Set<GrantedAuthority> userAuthotities = new HashSet<>();
+        com.work.bizauth.entity.User user = userService.getByUniqueId(uniqueId);
         log.info("load user by username :{}", user.toString());
 
-        return new org.springframework.security.core.userdetails.User(
+        return new User("admin", "admin", userAuthotities);
+       /* return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),
                 user.getEnabled(),
                 user.getAccountNonExpired(),
                 user.getCredentialsNonExpired(),
                 user.getAccountNonLocked(),
-                this.obtainGrantedAuthorities(user));
+                this.obtainGrantedAuthorities(user));*/
     }
 
     /**
